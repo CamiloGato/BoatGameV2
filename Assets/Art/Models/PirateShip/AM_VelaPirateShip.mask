@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AM_VelaPirateShip
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/Body
+    m_Weight: 0
+  - m_Path: Armature/Body/Baderita Superior
+    m_Weight: 0
+  - m_Path: Armature/Body/Baderita Superior/Baderita Superior.001
+    m_Weight: 0
+  - m_Path: Armature/Body/Baderita Superior/Baderita Superior.001/Baderita Superior.002
+    m_Weight: 0
+  - m_Path: Armature/Body/Baderita Superior/Baderita Superior.001/Baderita Superior.002/Baderita
+      Superior.002_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Banderita Inferior_L.001
+    m_Weight: 0
+  - m_Path: Armature/Body/Banderita Inferior_L.001/Banderita Inferior_L.002
+    m_Weight: 0
+  - m_Path: Armature/Body/Banderita Inferior_L.001/Banderita Inferior_L.002/Banderita
+      Inferior_L.003
+    m_Weight: 0
+  - m_Path: Armature/Body/Banderita Inferior_L.001/Banderita Inferior_L.002/Banderita
+      Inferior_L.003/Banderita Inferior_L.003_end
+    m_Weight: 0
+  - m_Path: Armature/Body/BanderitaInferior_R.001
+    m_Weight: 0
+  - m_Path: Armature/Body/BanderitaInferior_R.001/Banderita Inferior_R.002
+    m_Weight: 0
+  - m_Path: Armature/Body/BanderitaInferior_R.001/Banderita Inferior_R.002/Banderita
+      Inferior_R.003
+    m_Weight: 0
+  - m_Path: Armature/Body/BanderitaInferior_R.001/Banderita Inferior_R.002/Banderita
+      Inferior_R.003/Banderita Inferior_R.003_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Base Canon
+    m_Weight: 0
+  - m_Path: Armature/Body/Base Canon/Canon.001
+    m_Weight: 0
+  - m_Path: Armature/Body/Base Canon/Canon.001/Canon
+    m_Weight: 0
+  - m_Path: Armature/Body/Base Canon/Canon.001/Canon/Canon_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Base Canon/Canon.001/Canon Target
+    m_Weight: 0
+  - m_Path: Armature/Body/Base Canon/Canon.001/Canon Target/Canon Target_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Chain
+    m_Weight: 0
+  - m_Path: Armature/Body/Chain/Anchor
+    m_Weight: 0
+  - m_Path: Armature/Body/Chain/Anchor/Anchor_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Delante superior
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Delante superior/Cuerda Delante superior_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Delante superior.001
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Delante superior.001/Cuerda Delante superior.001_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Delante superior.002
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Delante superior.002/Cuerda Delante superior.002_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Delante superior.003
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Delante superior.003/Cuerda Delante superior.003_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Delante superior.004
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Delante superior.004/Cuerda Delante superior.004_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Inferior_L
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Inferior_L/Cuerda Inferior_L_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Inferior_R
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Inferior_R/Cuerda Inferior_R_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Medio_L
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Medio_L/Cuerda Medio_L_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Medio_R
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Medio_R/Cuerda Medio_R_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Superior
+    m_Weight: 0
+  - m_Path: Armature/Body/Cuerda Superior/Cuerda Superior_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Farolillo_L
+    m_Weight: 0
+  - m_Path: Armature/Body/Farolillo_L/Farolillo_L_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Farolillo_R
+    m_Weight: 0
+  - m_Path: Armature/Body/Farolillo_R/Farolillo_R_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Timon
+    m_Weight: 0
+  - m_Path: Armature/Body/Timon/Timon_end
+    m_Weight: 0
+  - m_Path: Armature/Body/Vergs Superior
+    m_Weight: 1
+  - m_Path: Armature/Body/Vergs Superior/Vela Centro
+    m_Weight: 1
+  - m_Path: Armature/Body/Vergs Superior/Vela Centro/Vela Centro_end
+    m_Weight: 1
+  - m_Path: Armature/Body/Vergs Superior/Vela_L
+    m_Weight: 1
+  - m_Path: Armature/Body/Vergs Superior/Vela_L/Vela_L_end
+    m_Weight: 1
+  - m_Path: Armature/Body/Vergs Superior/Vela_R
+    m_Weight: 1
+  - m_Path: Armature/Body/Vergs Superior/Vela_R/Vela_R_end
+    m_Weight: 1
+  - m_Path: Armature/Body/Vergs Superior/Verga
+    m_Weight: 1
+  - m_Path: Armature/Body/Vergs Superior/Verga/Vela_L.001
+    m_Weight: 1
+  - m_Path: Armature/Body/Vergs Superior/Verga/Vela_L.001/Vela_L.001_end
+    m_Weight: 1
+  - m_Path: Armature/Body/Vergs Superior/Verga/Vela_R.001
+    m_Weight: 1
+  - m_Path: Armature/Body/Vergs Superior/Verga/Vela_R.001/Vela_R.001_end
+    m_Weight: 1
+  - m_Path: Armature/Root
+    m_Weight: 0
+  - m_Path: Armature/Root/Root_end
+    m_Weight: 0
+  - m_Path: BezierCurve
+    m_Weight: 0
+  - m_Path: BezierCurve.001
+    m_Weight: 0
+  - m_Path: BezierCurve.002
+    m_Weight: 0
+  - m_Path: Circle.001
+    m_Weight: 0
+  - m_Path: Circle.002
+    m_Weight: 0
+  - m_Path: Circle.003
+    m_Weight: 0
+  - m_Path: Circle.004
+    m_Weight: 0
+  - m_Path: Circle.005
+    m_Weight: 0
+  - m_Path: Circle.007
+    m_Weight: 0
+  - m_Path: Cube.037
+    m_Weight: 0
+  - m_Path: Cylinder.018
+    m_Weight: 0
+  - m_Path: Flag
+    m_Weight: 0
+  - m_Path: Flag.001
+    m_Weight: 0
+  - m_Path: Parus
+    m_Weight: 0
+  - m_Path: Vert.001
+    m_Weight: 0
