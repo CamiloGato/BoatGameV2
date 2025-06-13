@@ -30,18 +30,6 @@ public class CameraComponent : MonoBehaviour
         FollowTarget();
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Vector3 size = maxWorldLimit - minWorldLimit;
-        Vector3 center = minWorldLimit + size / 2;
-        Gizmos.DrawCube(center, size);
-
-        //Dibujado de proyeccion de la camara en el plano del jugador
-        Gizmos.color = Color.magenta;
-    }
-
-
     private void FollowTarget()
     {
         if (target == null) return;
