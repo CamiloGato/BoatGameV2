@@ -78,11 +78,6 @@ public class BoatDetectionSensor : MonoBehaviour
             }
         }
 
-        if (_target.TryGetComponent(out DamageReceiver health))
-        {
-            //Debug.Log("Subscrito a: " + target.gameObject.name);
-        }
-
         target = _target;
 
         return true;

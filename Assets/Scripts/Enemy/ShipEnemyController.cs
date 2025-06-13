@@ -17,7 +17,8 @@ public class ShipEnemyController : MonoBehaviour
         Death,
         RotateAround,
     }
-
+    
+    // Variables y Referencias
     #region Serialized References
 
     [Header("General References")]
@@ -95,6 +96,7 @@ public class ShipEnemyController : MonoBehaviour
 
     #endregion
 
+    // Metodos de Unity
     #region Unity Methods
 
     private void Start()
@@ -149,6 +151,7 @@ public class ShipEnemyController : MonoBehaviour
 
     #endregion
 
+    // State Machine
     #region State Machine
 
     private void SetState(ShipEnemyState nextState)
@@ -183,10 +186,12 @@ public class ShipEnemyController : MonoBehaviour
 
     #endregion
 
+    // Funciones de Estado
     #region Patrol State
 
     private void PatrolStateEnter()
     {
+        // Establece el índice del waypoint actual
         navMeshAgent.enabled = true;
         navMeshAgent.isStopped = false;
         navMeshAgent.autoBraking = true;
@@ -196,13 +201,15 @@ public class ShipEnemyController : MonoBehaviour
 
     private void PatrolState()
     {
+        // Detecta si hay un objetivo dentro del rango de detección
         if (detectionSensor.Detect(out _currentTarget))
         {
             SetState(ShipEnemyState.Chase);
             return;
         }
 
-        if (navMeshAgent.remainingDistance < 0.1f)
+        // Si no hay objetivo, continúa patrullando
+        if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
         {
             _currentWaypointIndex = (_currentWaypointIndex + 1) % wayPoints.Length;
             navMeshAgent.SetDestination(wayPoints[_currentWaypointIndex].position);
@@ -215,6 +222,7 @@ public class ShipEnemyController : MonoBehaviour
 
     private void ChaseStateEnter()
     {
+        // Inicia el chase state
         navMeshAgent.enabled = true;
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = chaseSpeed;
@@ -222,19 +230,30 @@ public class ShipEnemyController : MonoBehaviour
 
     private void ChaseState()
     {
+        // Detecta si hay un objetivo dentro del rango de detección
+        if (!detectionSensor.Detect(out _currentTarget))
+        {
+            SetState(ShipEnemyState.Patrol);
+            return;
+        }
+
         float distance = Vector3.Distance(transform.position, _currentTarget.position);
 
-        if (distance >= maxChaseDistance)
+        // Si el objetivo está fuera del rango de persecución, vuelve al estado de patrulla
+        if (distance > maxChaseDistance)
         {
             SetState(ShipEnemyState.Patrol);
         }
-        else if (distance >= chaseStopDistance)
-        {
-            
-        }
         else
         {
-            SetState(ShipEnemyState.Attack);
+            // Si el objetivo está dentro del rango de persecución, persigue al objetivo
+            navMeshAgent.SetDestination(_currentTarget.position);
+            
+            // Si el objetivo está dentro de la distancia de parada de persecución, cambia al estado de ataque
+            if (distance <= chaseStopDistance)
+            {
+                SetState(ShipEnemyState.Attack);
+            }
         }
     }
     
@@ -244,28 +263,40 @@ public class ShipEnemyController : MonoBehaviour
 
     private void AttackStateEnter()
     {
+        // Inicia el ataque
         navMeshAgent.enabled = true;
         navMeshAgent.isStopped = false;
-        navMeshAgent.speed = attackSpeed;
         navMeshAgent.autoBraking = false;
+        navMeshAgent.speed = attackSpeed;
         CheckClosestAttackSide();
     }
 
     private void AttackState()
     {
+        // Si no hay un objetivo dentro del rango de detección, cambia al estado de persecución
+        if (!detectionSensor.Detect(out _currentTarget))
+        {
+            SetState(ShipEnemyState.Chase);
+            return;
+        }
+        
         attackDestination = GetAttackOffset(_currentTarget, fixedLateralPosOffset);
         navMeshAgent.SetDestination(attackDestination);
 
-        float remainingDistance = Vector3.Distance(transform.position, _currentTarget.position);
-        float scalar = Vector3.Dot(transform.forward, _currentTarget.forward);
-
-        if (navMeshAgent.remainingDistance <= distanceToAlign)
-        {
-            SetState(ShipEnemyState.RotateAround);
-        }
-        else if (scalar <= 0f || remainingDistance >= attackStopDistance)
+        // distTotarget es la distancia al objetivo
+        float distToTarget = Vector3.Distance(transform.position, _currentTarget.position);
+        // forwardDot es el producto punto entre la dirección hacia adelante del barco y la dirección hacia adelante del objetivo
+        float forwardDot   = Vector3.Dot(transform.forward, _currentTarget.forward);
+        
+        // Si la distancia al objetivo es mayor que la distancia de parada del ataque o el producto punto es negativo, cambia al estado de persecución
+        if (distToTarget > attackStopDistance || forwardDot < 0f)
         {
             SetState(ShipEnemyState.Chase);
+        }
+        // Si la distancia al objetivo es menor que la distancia de alineación, cambia al estado de alineación de ataque alineado
+        else if (navMeshAgent.remainingDistance <= distanceToAlign)
+        {
+            SetState(ShipEnemyState.AttackAlignment);
         }
     }
 
@@ -281,14 +312,17 @@ public class ShipEnemyController : MonoBehaviour
 
     private void AttackAlignmentState()
     {
+        // Alinea el barco con el objetivo
         transform.Rotate(0, navMeshAgent.angularSpeed * alignRotationDir * Time.deltaTime, 0);
 
+        // Comprueba si el barco está alineado con el objetivo
         if (Vector3.Dot(transform.forward, _currentTarget.forward) > 0.99f)
         {
             transform.forward = _currentTarget.forward;
             SetState(ShipEnemyState.RotateAround);
         }
 
+        // Si la distancia al objetivo es mayor que la distancia de salida, cambia al estado de ataque
         if (Vector3.Distance(transform.position, _currentTarget.position) >= distanceToExit)
         {
             SetState(ShipEnemyState.Attack);
@@ -308,8 +342,10 @@ public class ShipEnemyController : MonoBehaviour
 
     private void RotateAroundState()
     {
+        // Mueve el barco hacia adelante en la dirección de su frente
         transform.position += transform.forward * (alignmentSpeed * Time.deltaTime);
 
+        // Calcula la dirección deseada para el lado derecho del barco
         desiredRight = (_currentTarget.position - transform.position).normalized;
         if (rotationTurnLeft)
         {
@@ -317,16 +353,20 @@ public class ShipEnemyController : MonoBehaviour
         }
         desiredRight.y = 0;
 
+        // Comprueba si el barco está alineado con la dirección deseada
         if (!isAligned)
         {
+            // Si no está alineado, rota el barco hacia la dirección deseada
             transform.Rotate(0, navMeshAgent.angularSpeed * Time.deltaTime, 0);
             isAligned = Mathf.Abs(Vector3.Dot(transform.right.normalized, desiredRight.normalized)) > 0.9f;
         }
         else
         {
+            // Si está alineado, ajusta la dirección derecha del barco
             transform.right = desiredRight.normalized;
         }
 
+        // Comprueba si el barco está lo suficientemente cerca del objetivo para salir del estado de rotación
         if (Vector3.Distance(transform.position, _currentTarget.position) >= distanceToExit)
         {
             SetState(ShipEnemyState.Attack);
@@ -369,6 +409,7 @@ public class ShipEnemyController : MonoBehaviour
 
     #endregion
 
+    // Ayudas
     #region Helpers
 
     private bool GetRotationDirectionRight()
