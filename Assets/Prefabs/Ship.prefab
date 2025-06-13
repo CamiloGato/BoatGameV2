@@ -619,6 +619,7 @@ MonoBehaviour:
   player: 1
   rb: {fileID: 4145823848301890557}
   animator: {fileID: 2802357507063368924}
+  boatCollider: {fileID: 2988397346917177426}
   cannonController: {fileID: 1852346400709141659}
   maxSpeed: 40
   acceleration: 20
@@ -696,10 +697,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6.14661
-  m_Height: 25.092342
+  m_Radius: 4
+  m_Height: 20
   m_Direction: 2
-  m_Center: {x: -0.16954982, y: 4.117674, z: -0.87026256}
+  m_Center: {x: 0, y: 4, z: 0}
 --- !u!1 &7337323319137972523
 GameObject:
   m_ObjectHideFlags: 0

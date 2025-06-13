@@ -4,13 +4,14 @@ using UnityEngine.Events;
 
 public class BoatPlayer : MonoBehaviour
 {
-    private static readonly int Death = Animator.StringToHash("death");
+    private static readonly int Death = Animator.StringToHash("Death");
 
     public int player = 1;
 
     [Header("References")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Animator animator;
+    [SerializeField] private Collider boatCollider;
     [SerializeField] private CannonController cannonController;
 
     [Header("Movement")]
@@ -125,6 +126,7 @@ public class BoatPlayer : MonoBehaviour
     public void TriggerDeath()
     {
         cannonController.enabled = false;
+        boatCollider.enabled = false;
         _currentSpeed = 0f;
         _velocity = Vector3.zero;
         _isDead = true;

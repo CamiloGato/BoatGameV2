@@ -18,14 +18,14 @@ public class HUDController : MonoBehaviour
         // Actualizar el temporizador de la ronda
         float roundTime = gameTimer.currentTime;
         string roundTimeString = TimeSpan.FromSeconds(roundTime).ToString(@"mm\:ss");
-        roundTimerText.text = "Siguiente Ronda: " + roundTimeString;
+        roundTimerText.text = "Next: " + roundTimeString;
         
         // Actualizar el temporizador global
         float globalTime = gameTimer.globalTimer;
         string globalTimeString = TimeSpan.FromSeconds(globalTime).ToString(@"mm\:ss");
-        globalTimerText.text = "Tiempo Global: " + globalTimeString;
+        globalTimerText.text = "Time: " + globalTimeString;
 
         // Actualizar el número de ronda
-        roundNumberText.text = "Ronda: " + spawner.currentRound;
+        roundNumberText.text = "Round: " + spawner.currentRound;
     }
 }

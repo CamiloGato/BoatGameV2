@@ -5,19 +5,21 @@ public class GameTimer : MonoBehaviour
 {
     public float roundTimer = 60f; // Tiempo en segundos para cada ronda
     public float currentTime;
-    
     public float globalTimer; // Temporizador global para todo el juego
-
     public UnityEvent onRoundEnd; // Evento que se dispara al finalizar una ronda
+    
+    private bool _isTimerActive = true; // Indica si el temporizador está activo
     
     private void Start()
     {
         currentTime = roundTimer; // Inicializa el temporizador con el tiempo de la ronda
         onRoundEnd.Invoke();
     }
-
+    
     private void Update()
     {
+        if (!_isTimerActive) return; // Si el temporizador no está activo, no hace nada
+        
         // Actualiza el temporizador global
         globalTimer += Time.deltaTime;
 
@@ -31,5 +33,10 @@ public class GameTimer : MonoBehaviour
             onRoundEnd.Invoke();
             currentTime = roundTimer; // Reinicia el temporizador de la ronda
         }
+    }
+    
+    public void StopTimer()
+    {
+        _isTimerActive = false; // Detiene el temporizador
     }
 }
