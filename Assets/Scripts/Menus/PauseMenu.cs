@@ -21,8 +21,8 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
-
     }
+    
     public void Pause()
     {
         juegoPausado = true;
@@ -40,8 +40,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         botonPausa.SetActive(true);
         menuPausa.SetActive(false);
-        
-        
     }
 
     public void Restart()

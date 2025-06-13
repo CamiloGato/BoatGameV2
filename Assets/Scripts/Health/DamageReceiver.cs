@@ -10,6 +10,8 @@ public class DamageReceiver : MonoBehaviour
     [SerializeField] private float _initialFillSpriteRendererSize; // 100 % vida
     
     public UnityEvent onDeath;
+    public UnityEvent onHealthLow; // Evento para vida baja
+    private bool _lowHealthEventInvoked = false; // Evita que el evento se invoque múltiples veces
 
     void Start()
     {
@@ -31,14 +33,17 @@ public class DamageReceiver : MonoBehaviour
         // Reemplazar el tamaño del sprite del llenado
         fillSpriteRenderer.localScale = newScale;
 
+        // Si la vida es baja, invocar el evento
+        if (percentage <= 0.4f && !_lowHealthEventInvoked)
+        {
+            _lowHealthEventInvoked = true; // Evita que se invoque varias veces
+            onHealthLow.Invoke();
+        }
+        
+        // Si la vida llega a 0, invocar el evento de muerte
         if (_currentHealth == 0)
         {
             onDeath.Invoke();
         }
-    }
-
-    [ContextMenu("Test Set Damage")]
-    public void SetDamageTest(){
-        SetDamage(50);
     }
 }
