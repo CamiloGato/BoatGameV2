@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -13,8 +12,6 @@ public class Spawner : MonoBehaviour
     public int currentRound = 0;
     public int enemiesPerRound = 2;
     
-    private List<GameObject> _enemiesSpawned = new List<GameObject>();
-    
     public void SpawnEnemies()
     {
         currentRound++; // Incrementa la ronda actual
@@ -26,8 +23,7 @@ public class Spawner : MonoBehaviour
         {
             // Selecciona un punto de spawn aleatorio
             int spawnIndex = Random.Range(0, spawnPoints.Length);
-            GameObject enemy = Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
-            _enemiesSpawned.Add(enemy);
+            Instantiate(enemyPrefab, spawnPoints[spawnIndex].position, Quaternion.identity);
         }
     }
 }

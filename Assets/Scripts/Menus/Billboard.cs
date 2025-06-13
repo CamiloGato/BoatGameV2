@@ -7,6 +7,7 @@ public class Billboard : MonoBehaviour
 
     void Start()
     {
+        // Obtiene la cámara principal al iniciar
         mainCamera = Camera.main;
     }
 

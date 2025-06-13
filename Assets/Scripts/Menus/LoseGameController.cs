@@ -28,8 +28,8 @@ public class LoseGameController : MonoBehaviour
         int bestRound = PlayerPrefs.GetInt("BestRound", 0);
         string bestTime = PlayerPrefs.GetString("BestTime", "00:00");
         
-        // Obtener el tiempo de la ronda actual
-        float currentRoundTime = gameTimer.currentTime;
+        // Obtener el tiempo en total de la partida
+        float currentRoundTime = gameTimer.globalTimer;
         string formattedRoundTime = FormatTime(currentRoundTime);
         
         // Obtener el número de ronda actual

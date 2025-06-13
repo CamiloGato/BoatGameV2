@@ -10,13 +10,10 @@ public class CannonController : MonoBehaviour
     public Transform detectionCenterPoint;
 
     [Header("Shoot")]
-    [SerializeField]
-    private CannonBallController _cannonBallPrefab;
-    [SerializeField]
-    private Transform _shootingPoint;
-
-    [SerializeField]
-    private float _shootVerticalOffset;
+    [SerializeField] private CannonBallController _cannonBallPrefab;
+    [SerializeField] private Transform _shootingPoint;
+    [SerializeField] private float _bulletVelocity = 30f;
+    [SerializeField] private float _shootVerticalOffset;
 
     [SerializeField] private float _shootTimeMin = 1f;
     [SerializeField] private float _shootTimeMax = 3f;
@@ -157,7 +154,7 @@ public class CannonController : MonoBehaviour
         // Aplicar la fuerza al proyectil
         Vector3 targetPoint = _target.position;
         targetPoint.y += _shootVerticalOffset;
-        cannonBall.StartMovement(30f, targetPoint);
+        cannonBall.StartMovement(_bulletVelocity, targetPoint);
     }
 
     /// <summary>

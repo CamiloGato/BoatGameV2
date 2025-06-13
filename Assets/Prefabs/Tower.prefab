@@ -396,7 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b3d759d02462145856402583c94f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 200
   fillSpriteRenderer: {fileID: 6224789073686052870}
   _initialFillSpriteRendererSize: 0
   onDeath:
@@ -610,6 +610,10 @@ PrefabInstance:
       propertyPath: ownerGo
       value: 
       objectReference: {fileID: 8196832801808159332}
+    - target: {fileID: 2458296815030122794, guid: d2d4fdf98b8a3fe478f9afec045ed775, type: 3}
+      propertyPath: _bulletVelocity
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4436734037703210088, guid: d2d4fdf98b8a3fe478f9afec045ed775, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.01

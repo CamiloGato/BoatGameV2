@@ -143,7 +143,7 @@ public class BoatPlayer : MonoBehaviour
     {
         animator.SetTrigger(Death);
         explosionEffect.Play();
-        yield return new WaitForSeconds(explosionEffect.main.duration);
+        yield return new WaitForSeconds(3f);
         onDeath.Invoke();
     }
 }

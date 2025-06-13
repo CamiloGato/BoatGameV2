@@ -33,7 +33,7 @@ namespace Tower
         {
             animator.SetTrigger(Death);
             destroyEffect.Play();
-            yield return new WaitForSeconds(2f); // Espera a que la animación de destrucción termine
+            yield return new WaitForSeconds(4f); // Espera a que la animación de destrucción termine
             Destroy(gameObject);
         }
         

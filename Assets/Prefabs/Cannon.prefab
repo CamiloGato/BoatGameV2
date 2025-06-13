@@ -150,6 +150,7 @@ MonoBehaviour:
   detectionCenterPoint: {fileID: 5702119837987457669}
   _cannonBallPrefab: {fileID: 4788391098757718961, guid: cf80bc9428037ae42af7661693fcef6c, type: 3}
   _shootingPoint: {fileID: 4966111701046387005}
+  _bulletVelocity: 50
   _shootVerticalOffset: 3
   _shootTimeMin: 1
   _shootTimeMax: 3

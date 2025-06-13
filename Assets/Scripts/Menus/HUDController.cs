@@ -16,7 +16,7 @@ public class HUDController : MonoBehaviour
     private void Update()
     {
         // Actualizar el temporizador de la ronda
-        float roundTime = gameTimer.currentTime;
+        float roundTime = gameTimer.currentTimeInRound;
         string roundTimeString = TimeSpan.FromSeconds(roundTime).ToString(@"mm\:ss");
         roundTimerText.text = "Next: " + roundTimeString;
         
